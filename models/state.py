@@ -20,4 +20,4 @@ class State(BaseModel, Base):
             for object in models.storage.all(City).values():
                 if object.state_id == self.id:
                     list_of_cities.append(object)
-            return object
+            return list_of_cities
