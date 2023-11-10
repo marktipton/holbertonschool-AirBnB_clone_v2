@@ -21,6 +21,7 @@ def c(text):
     return f'C {text_w_spaces}'
 
 
+@app.route('/python/', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def python(text="is cool"):
     text_w_spaces = text.replace('_', ' ')
