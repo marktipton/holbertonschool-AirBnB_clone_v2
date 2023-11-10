@@ -15,6 +15,7 @@ classes = {
             'Review': Review
         }
 
+
 class FileStorage:
     """This class manages storage of hbnb models in JSON format"""
     __file_path = 'file.json'
@@ -29,9 +30,10 @@ class FileStorage:
                 cls = classes.get(cls)
             filter_dict = {}
             for obj in FileStorage.__objects.values():
-                if type(obj) == cls:
-                    filter_dict.update({obj.to_dict()['__class__'] + "."
-                                        + obj.id: obj})
+                if isinstance(obj, cls):
+                    filter_dict.update(
+                        {obj.to_dict()['__class__'] + "." + obj.id: obj}
+                    )
             return filter_dict
 
     def new(self, obj):

@@ -34,8 +34,10 @@ class DBStorage:
         database = getenv('HBNB_MYSQL_DB')
 
         # start engine
-        self.__engine = create_engine(f'mysql+mysqldb://{user}:{password}'
-                                      f'@{host}/{database}', pool_pre_ping=True)
+        self.__engine = create_engine(
+            f'mysql+mysqldb://{user}:{password}'
+            f'@{host}/{database}', pool_pre_ping=True
+        )
 
         # check if test
         if getenv('HBNB_ENV') == "test":
@@ -70,6 +72,7 @@ class DBStorage:
         Base.metadata.create_all(self.__engine)
         self.__session = scoped_session(sessionmaker(bind=self.__engine,
                                                      expire_on_commit=False))
+
     def close(self):
         """Call reload method to deserialize JSON file to objects"""
         self.reload()
