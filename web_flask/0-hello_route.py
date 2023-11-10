@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""starts a Flask web application on port 5000"""
 from flask import Flask
 app = Flask(__name__)
 
