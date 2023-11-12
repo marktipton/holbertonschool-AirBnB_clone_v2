@@ -3,6 +3,7 @@
 from flask import Flask, render_template, g
 from models import storage
 from models.state import State
+from models.city import City
 
 app = Flask(__name__)
 
@@ -15,10 +16,10 @@ def list_states():
 
 
 @app.route('/states/<id>', strict_slashes=False)
-def list_states():
-    """returns key value pair for states"""
-    states = storage.all(State).values()
-    return render_template('7-states_list.html', states=states)
+def list_states_by_id(id):
+    """returns key value pair for state when given id"""
+    state = storage.get(State, id)
+    return render_template('9-states.html', state=state, not_found=not state)
 
 
 @app.teardown_appcontext
