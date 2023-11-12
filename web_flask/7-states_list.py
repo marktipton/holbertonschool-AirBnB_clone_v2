@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """flask web app connected to file and db storage"""
-from flask import Flask, abort, render_template
+from flask import Flask, render_template
 from models import storage
 from models.state import State
 
@@ -14,10 +14,9 @@ def list_states():
     return render_template('states_list.html', states=states)
 
 
-
 @app.teardown_appcontext
-def teardown_context():
-    """tear down """
+def teardown_context(exception):
+    """remove current sqlalchemy session"""
     storage.close()
 
 
