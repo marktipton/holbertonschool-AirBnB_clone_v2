@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """flask web app connected to file and db storage"""
-from flask import Flask, render_template
+from flask import Flask, render_template, g
 from models import storage
 from models.state import State
 
@@ -17,7 +17,8 @@ def list_states():
 @app.teardown_appcontext
 def teardown_context(exception):
     """remove current sqlalchemy session"""
-    storage.close()
+    if hasattr(g, 'storage'):
+        g.storage.close()
 
 
 if __name__ == '__main__':
