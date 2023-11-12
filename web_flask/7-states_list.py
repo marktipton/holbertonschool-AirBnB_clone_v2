@@ -11,7 +11,7 @@ app = Flask(__name__)
 def list_states():
     """returns key value pair for states"""
     states = storage.all(State).values()
-    return render_template('states_list.html', states=states)
+    return render_template('7-states_list.html', states=states)
 
 
 @app.teardown_appcontext
@@ -21,4 +21,4 @@ def teardown_context(exception):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=False)
