@@ -17,6 +17,7 @@ def list_states():
 @app.route('/states/<id>', strict_slashes=False)
 def list_states_by_id(id):
     """returns key value pair for state when given id"""
+    id = int(id)
     states = storage.all(State).values()
     return render_template(
         '9-states.html',

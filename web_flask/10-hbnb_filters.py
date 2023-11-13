@@ -3,7 +3,6 @@
 from flask import Flask, render_template, g
 from models import storage
 from models.state import State
-from models.city import City
 from models.amenity import Amenity
 
 app = Flask(__name__)
@@ -13,12 +12,10 @@ app = Flask(__name__)
 def hbnb_filters():
     """display airbnb html page"""
     states = storage.all(State).values()
-    cities = storage.all(City).values()
     amenities = storage.all(Amenity).values()
     return render_template(
         '10-hbnb_filters.html',
         states=states,
-        cities=cities,
         amenities=amenities
     )
 
