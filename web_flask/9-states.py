@@ -20,8 +20,9 @@ def list_states_by_id(id):
     state = storage.get(State, id)
     return render_template(
         '9-states.html',
-        state=state,
-        not_found=not state)
+        id=id,
+        state=state
+    )
 
 
 @app.teardown_appcontext
