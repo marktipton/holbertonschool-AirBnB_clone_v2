@@ -3,7 +3,6 @@
 from flask import Flask, render_template, g
 from models import storage
 from models.state import State
-from models.city import City
 
 app = Flask(__name__)
 
@@ -12,11 +11,9 @@ app = Flask(__name__)
 def cities_states():
     """returns key value pair for states"""
     states = storage.all(State).values()
-    cities = storage.all(City).values()
     return render_template(
         '8-cities_by_states.html',
-        states=states,
-        cities=cities
+        states=states
     )
 
 
