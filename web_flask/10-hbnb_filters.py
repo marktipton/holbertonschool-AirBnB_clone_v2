@@ -25,6 +25,9 @@ def list_states_by_id(id):
 @app.route('/hbnb_filters', strict_slashes=False)
 def hbnb_filters():
     """display airbnb html page"""
+    return render_template('10-hbnb_filters.html')
+
+
 @app.teardown_appcontext
 def teardown_context(exception):
     """remove current sqlalchemy session"""
