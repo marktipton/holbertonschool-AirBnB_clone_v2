@@ -19,7 +19,12 @@ def list_states():
 def list_states_by_id(id):
     """returns key value pair for state when given id"""
     state = storage.get(State, id)
-    return render_template('9-states.html', state=state, not_found=not state)
+    cities = storage.all(City).values()
+    return render_template(
+        '9-states.html',
+        cities=cities,
+        state=state,
+        not_found=not state)
 
 
 @app.teardown_appcontext
